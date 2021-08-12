@@ -1,0 +1,23 @@
+<form onsubmit="employee()">
+    <div class="form-box">
+        <div class="header-text">
+            Employee Details
+        </div>
+        <input placeholder="Your Name" type="text" id="name" required>
+        <input placeholder="keyskills" type="text" id="keyskills"required>
+        <!-- <input placeholder="Projects" type="text" id="projects"> -->
+        <input placeholder="Education" type="text" id="education"required>
+        <!-- <input placeholder="ResumeHeadline" type="text" id="resume"> -->
+        <input placeholder="Date of Birth" type="date" id="dateofbirth"required>
+        <input placeholder="MobileNo" type="text" id="mobileno" required>
+        <!-- <input placeholder="ctc" type="text" id="ctc"> -->
+        <!-- <input placeholder="expected_CTC" type="text" id="expected_CTC"> -->
+        <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
+
+        <p id="demo"></p>
+        <input id="terms" type="checkbox">
+        <label for="terms"></label>
+        <span>Agree with <a href="#">Terms & Conditions</a></span>
+        <button>submit</button><a style="color: white;" href="index.html">back</a>
+    </div>
+</form>
