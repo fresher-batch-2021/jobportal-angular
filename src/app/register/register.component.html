@@ -1,15 +1,12 @@
-<form onsubmit="register()">
-    <div class="form-box">
-    
-            <h1>Register Form</h1>
-        <input placeholder="Your name" type="text" id="name"required> 
-        <input placeholder="Your Email Address" type="text" id="email"required> 
-        <input placeholder="Your Password" type="password" id="password"required> 
-        <input placeholder="Your Confirm Password" type="password" id="confirmpassword"required> 
-        <input id="terms" type="checkbox"> 
-        <label for="terms"></label>
-        <span>Agree with <a href="#">Terms & Conditions</a></span> 
-        <button>register</button><a href="index.html">back</a></p>
+<section class="RegisterContainer">
+    <form (ngSubmit)="register()">
+        <div class="form-box">
+            <input type="text" [(ngModel)]="registerName" required autocomplete="off" name="registerName" id="registerName"placeholder="Name"pattern="[a-zA-Z]{1,32}">
+            <input type="email" [(ngModel)]="registerEmail" required autocomplete="off" id="registerEmail" name="registerEmail" placeholder="Email"pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <input type="password" [(ngModel)]="registerPassword" required autocomplete="off" id="registerPassword" name="registerPassword"placeholder="Password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <input type="password" required [(ngModel)]="registerConfirm" autocomplete="off" id="registerConfirm" name="registerPassword"placeholder="ConfirmPassword">
+        <button type="submit">Register</button>
+        <p class="backlink">Already have an account ?<a routerLink='../login'>Login</a></p>
     </div>
-</form>
-<script src="register.js"></script>
+    </form>
+</section>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import axios from 'axios'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,44 +9,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+   
   }
-  function login() {
-    event.preventDefault();
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
-if(email ==""||email ==null||email.trim()==""){
-    alert("invalid username");
-} else{
-    if(password.trim()!=""){
-        const loginobj={
-            "email":email,
-           "password":password
-};
-const url="https://product-mock-api.herokuapp.com/jobportalapp/api/v1/auth/login"
-console.log(loginobj);
-axios.post(url,loginobj).then(res=>{
-    console.log(res);
-    localStorage.setItem("usrEmail",email);//savin email in local storage
-    alert("login succesful");
-    // alert(localStorage.getItem("usrEmail"));
-    window.location.href="index.html";
-}).catch(err=>{
-    console.log(err.response.data);
-    if(err.response.data.errormessage){
-        alert(err.response.data.errormessage);
-    }
-    else{
-        alert("login failed");
-    }
-});    
+  loginEmail:string="";
+  loginPassword:string="";
+  
+  login(){
+    let email=this.loginEmail;
+    let password=this.loginPassword;
+    // alert(this.loginEmails);
+    // alert(this.loginPassword);
+    // ==========================
+        
+switch(true){
+  case (email ==""||email==null||email.trim()==""):{alert("invalid username"); break;}
+  case (password.trim() == ""):{alert("password is invalid"); break;}
+
+  default :{const loginobj = {
+      "email": email,
+      "password": password 
+     };
+
+      //sending data to server
+      const url = "https://69ba05e4-6d14-4d5f-8640-ee67170e853f-bluemix.cloudantnosqldb.appdomain.cloud/register/_find";
+      const dbUserName=environment.dbUserName;
+      const dbPassword = environment.dbPassword;
+      const  basicAuth = "Basic " + btoa(dbUserName + ":" + dbPassword);
+
+
+
+
+
+
+      console.log(loginobj);//for our verification
+
+      axios.post(url,loginobj,{headers:{Authorization:basicAuth}}).then(res=>{
+          console.table(res.data);
+
+
+          alert("login succesful");
+          this.route.navigate(['/dashboard'])
+      }).catch(err=>{
+              console.log(err.response.data);
+              if (err.response.data.errorMessage){
+                  alert(err.response.data.errorMessage);
+              }
+              else{
+              alert("login failed");
+              }
+      });
+  }
 }
-else{
-    alert("password is invalid");
-}
-}
-}
-    
+    // ==========================
+
+  }
 }
