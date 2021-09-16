@@ -40,18 +40,28 @@ switch(true){
       const  basicAuth = "Basic " + btoa(dbUserName + ":" + dbPassword);
 
 
-
+let requestObj={
+  selector:{
+      email:email,
+      password:password
+  },
+  fields:['name','email','role']
+};
 
 
 
       console.log(loginobj);//for our verification
 
-      axios.post(url,loginobj,{headers:{Authorization:basicAuth}}).then(res=>{
-          console.table(res.data);
-
-
+      axios.post(url,requestObj,{headers:{Authorization:basicAuth}}).then(res=>{
+          console.table(res.data.docs);
+        let data=res.data.docs[0];
+        if(data==null){
+          alert('login falied');
+          return;
+        }
+        else if(data.role=='ADMIN'){
           alert("login succesful");
-          this.route.navigate(['/dashboard'])
+          this.route.navigate(['/dashboard'])}
       }).catch(err=>{
               console.log(err.response.data);
               if (err.response.data.errorMessage){
