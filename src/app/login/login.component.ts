@@ -59,7 +59,12 @@ let requestObj={
           alert('login falied');
           return;
         }
+        else if(data.role=="USER"){
+          alert("user can't login in admin portal");
+          return;
+        }
         else if(data.role=='ADMIN'){
+          localStorage.setItem('isLoggedIn',JSON.stringify(true));
           alert("login succesful");
           this.route.navigate(['/dashboard'])}
       }).catch(err=>{
