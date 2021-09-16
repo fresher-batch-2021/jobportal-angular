@@ -12,6 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { AddjobsComponent } from './addjobs/addjobs.component';
 import { CrudComponent } from './crud/crud.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { CompanyCandidatesComponent } from './company-candidates/company-candidates.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +27,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     AddjobsComponent,
     CrudComponent,
-    DashboardComponent
+    DashboardComponent,
+    ViewuserComponent,
+    UserdetailsComponent,
+    CompanyDetailsComponent,
+    CompanyCandidatesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

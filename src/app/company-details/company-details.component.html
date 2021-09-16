@@ -1,0 +1,24 @@
+<app-header></app-header>
+<section>
+  <h3 class="titles">List All Companies</h3>
+  
+  <table id="myTable" class="table-content" border="1">
+    <thead class="table-head">
+      <tr>
+        <th>S.no</th>
+        <th>CompanyName</th>
+        <th>image</th>
+        <th>Skills</th>
+    </tr>
+    </thead>
+    <tbody *ngFor='let jobDetails of company; let i=index' >
+      <tr>
+        <td>{{i+1}}</td>
+        <td>{{jobDetails.companyName}}</td>
+        <td><img class="companyImage" (click)='companyAssets(jobDetails.companyName)' src="assets/images/{{jobDetails.imageUrl}}" alt="ntg"> </td>
+        <td>{{jobDetails.skills}}</td>
+     </tr>
+    </tbody>
+  </table>
+</section>
+

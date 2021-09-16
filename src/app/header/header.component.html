@@ -15,11 +15,10 @@
     </div>
     <div class="navcontent">
         <ul>
-            <li><a routerLink='/home'>Jobs</a></li>
-            <li><a routerLink=''>User Register</a></li>
-            <li><a routerLink=''></a></li>
-            <li><a routerLink=''>AboutUs</a></li>
-            <li *ngIf='isLoggedIn'><a> logout</a></li>
+            <li><a routerLink='/dashboard'>Dashboard</a></li>
+            <li><a routerLink='/viewuser'>ViewUser</a></li>
+            <li><a routerLink='/company-details'>CompanyDetails</a></li>
+            <li *ngIf='isLoggedIn'><a (click)="logout()"> Logout</a></li>
         </ul><br><br>
     </div>
     <div class="spacing"></div>

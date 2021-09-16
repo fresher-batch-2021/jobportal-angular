@@ -1,0 +1,40 @@
+<app-header></app-header>
+<section>
+  <h3 class="titles">List All users</h3>
+  <table id="myTable" class="table-content" border="1">
+    <thead class="table-head">
+      <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th> <tr>
+            
+            <th>CompanyName</th>
+            <th>AppliedDate</th>
+            <th>Skills</th>
+            <th>Status</th>
+        </tr>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor='let user of users; let i=index' >
+      <tr>
+        <td>{{i+1}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>
+                   
+                        <tr *ngFor='let job of user.appliedJobs;'>
+                          <td>{{job.companyName}}</td>
+                          <td>{{job.appliedDate}}</td>
+                          <td>{{job.skills}}</td>
+                          <td>{{job.status}}</td>
+                          </tr>
+                      </td>
+                      
+      </tr>
+    </tbody>
+  </table>
+</section>
